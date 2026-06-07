@@ -2,6 +2,7 @@ import streamlit as st
 import docx
 import json
 import io
+from pathlib import Path
 
 # Set up the page title and description
 st.set_page_config(page_title="JSON to Docx Converter", page_icon="📝")
@@ -26,29 +27,29 @@ if st.button("Process and Generate Document"):
             # Parse the user-provided JSON
             data = json.loads(json_input)
             
-            # Initialize a blank Word Document
-            doc = docx.Document()
-            source_counter = 1
+            # Load the template document
+            template_path = Path(__file__).parent / "Template.docx"
+            doc = docx.Document(str(template_path))
             
             # Process the JSON arrays exactly like your target format
             for item in data:
-                # 1. Append Header
-                doc.add_paragraph(f"{item.get('topic', '')}")
-                source_counter += 1
+                # 1. Append Title with "Title" style
+                title_para = doc.add_paragraph(f"{item.get('topic', '')}")
+                title_para.style = 'Title'
                 
-                # 2. Append Subheading
-                doc.add_paragraph(f"{item.get('subheading', '')}")
-                source_counter += 1
+                # 2. Append Subheading with "normal" style
+                subheading_para = doc.add_paragraph(f"{item.get('subheading', '')}")
+                subheading_para.style = 'Normal'
                 
-                # 3. Append Content Body
-                doc.add_paragraph(f"{item.get('body_text', '')}")
-                source_counter += 1
+                # 3. Append Content Body with "normal" style
+                body_para = doc.add_paragraph(f"{item.get('body_text', '')}")
+                body_para.style = 'Normal'
                 
-                # 4. Append Isolated Word Bank
+                # 4. Append Isolated Word Bank with "strong" style
                 word_bank = item.get('word_bank', [])
                 bank_string = ", ".join(word_bank)
-                doc.add_paragraph(f"{bank_string}")
-                source_counter += 1
+                bank_para = doc.add_paragraph(f"{bank_string}")
+                bank_para.style = 'Strong'
                 
                 # Add a blank line between sections for readability
                 doc.add_paragraph("")
