@@ -37,15 +37,11 @@ if st.button("Process and Generate Document"):
                 title_para = doc.add_paragraph(f"{item.get('topic', '')}")
                 title_para.style = 'Title'
                 
-                # 2. Append Subheading with "normal" style
-                subheading_para = doc.add_paragraph(f"{item.get('subheading', '')}")
-                subheading_para.style = 'Normal'
-                
-                # 3. Append Content Body with "normal" style
+                # 2. Append Content Body with "normal" style
                 body_para = doc.add_paragraph(f"{item.get('body_text', '')}")
                 body_para.style = 'Normal'
                 
-                # 4. Append Isolated Word Bank with "strong" character style
+                # 3. Append Isolated Word Bank with "strong" character style
                 word_bank = item.get('word_bank', [])
                 bank_string = ", ".join(word_bank)
                 bank_para = doc.add_paragraph()
