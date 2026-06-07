@@ -10,7 +10,7 @@ st.image("1116.jpg", use_container_width=True)
 st.set_page_config(page_title="JSON to Docx Converter", page_icon="📝")
 st.subheader("📝 BLANKETY BLANK Specification CLOZE task Generator")
 
-st.markdown("FIRST use this Gemini Gem to turn a set of specification statements into a series of simple recall questions [Paste all the specification statements into this](https://gemini.google.com/gem/1CP6tJCFXiPZY-aRzbab-6fUZJyB0ILL4?usp=sharing).")
+st.markdown("FIRST use this Gemini Gem to turn a set of specification statements into a series of simple recall questions formatted as a JSON [Paste all the specification statements into this](https://gemini.google.com/gem/1_xPXVbOMLdmMlHATG7jaom9fzmSOquKK?usp=sharing).")
 st.write("NEXT Paste your structured JSON below to automatically generate and download your formatted Word document.")
 # Text input area for the JSON data
 json_input = st.text_area(
