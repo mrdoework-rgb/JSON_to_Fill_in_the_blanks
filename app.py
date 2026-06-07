@@ -45,11 +45,13 @@ if st.button("Process and Generate Document"):
                 body_para = doc.add_paragraph(f"{item.get('body_text', '')}")
                 body_para.style = 'Normal'
                 
-                # 4. Append Isolated Word Bank with "strong" style
+                # 4. Append Isolated Word Bank with "strong" character style
                 word_bank = item.get('word_bank', [])
                 bank_string = ", ".join(word_bank)
-                bank_para = doc.add_paragraph(f"{bank_string}")
-                bank_para.style = 'Strong'
+                bank_para = doc.add_paragraph()
+                bank_para.style = 'Normal'
+                run = bank_para.add_run(bank_string)
+                run.style = 'Strong'
                 
                 # Add a blank line between sections for readability
                 doc.add_paragraph("")
