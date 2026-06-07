@@ -5,11 +5,14 @@ import io
 from pathlib import Path
 
 # Set up the page title and description
+st.image("1116.jpg", use_container_width=True)
+
 st.set_page_config(page_title="JSON to Docx Converter", page_icon="📝")
-st.title("📝 Spec Document Generator")
+st.subheader("📝 Spec Document Generator")
 st.write(
     "Paste your structured JSON below to automatically generate and download your formatted Word document."
 )
+st.markdown("First use this Gemini Gem to turn a set of specification statements into a series of simple recall questions [Paste all the specification statements into this](https://gemini.google.com/gem/1CP6tJCFXiPZY-aRzbab-6fUZJyB0ILL4?usp=sharing).")
 
 # Text input area for the JSON data
 json_input = st.text_area(
